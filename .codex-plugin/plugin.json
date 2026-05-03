@@ -1,0 +1,42 @@
+{
+  "name": "twenty-crm",
+  "version": "0.1.0",
+  "description": "A Codex plugin for working with Twenty CRM developer APIs, app extensions, and workspace data.",
+  "author": {
+    "name": "Lukas",
+    "email": "[TODO: add-public-email-if-needed]",
+    "url": "https://github.com/cancel-cloud/"
+  },
+  "homepage": "https://docs.twenty.com/developers/",
+  "repository": "https://github.com/cancel-cloud/twenty-codex-plugin.git",
+  "license": "MIT",
+  "keywords": [
+    "twenty",
+    "crm",
+    "api",
+    "graphql",
+    "rest"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Twenty CRM",
+    "shortDescription": "Work with Twenty CRM APIs and developer workflows.",
+    "longDescription": "Adds Codex guidance and helper tooling for Twenty CRM workspaces, including REST and GraphQL API usage, schema-aware CRM operations, metadata changes, app extension scaffolding, and webhook-oriented development.",
+    "developerName": "Lukas",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write",
+      "Code"
+    ],
+    "websiteURL": "https://twenty.com/",
+    "privacyPolicyURL": "https://twenty.com/privacy",
+    "termsOfServiceURL": "https://twenty.com/terms",
+    "defaultPrompt": [
+      "List Twenty companies through the REST API.",
+      "Draft a Twenty GraphQL query for people.",
+      "Plan a Twenty app extension."
+    ],
+    "brandColor": "#1447E5"
+  }
+}
