@@ -33,6 +33,62 @@ python3 scripts/twenty_api.py metadata 'query { objects { edges { node { nameSin
 
 Twenty generates APIs from each workspace schema, so object and field names can differ between workspaces.
 
+## Personal Codex Install
+
+Codex loads plugins through marketplaces, then installs the selected plugin into its plugin cache. For a personal local install:
+
+1. Copy this repository into:
+
+   ```text
+   ~/.codex/plugins/twenty-crm
+   ```
+
+2. Add a personal marketplace at:
+
+   ```text
+   ~/.agents/plugins/marketplace.json
+   ```
+
+   with:
+
+   ```json
+   {
+     "name": "local",
+     "interface": {
+       "displayName": "Local Plugins"
+     },
+     "plugins": [
+       {
+         "name": "twenty-crm",
+         "source": {
+           "source": "local",
+           "path": "./.codex/plugins/twenty-crm"
+         },
+         "policy": {
+           "installation": "AVAILABLE",
+           "authentication": "ON_INSTALL"
+         },
+         "category": "Productivity"
+       }
+     ]
+   }
+   ```
+
+3. Register the home directory marketplace root:
+
+   ```bash
+   codex plugin marketplace add ~
+   ```
+
+4. Enable the installed plugin in `~/.codex/config.toml`:
+
+   ```toml
+   [plugins."twenty-crm@local"]
+   enabled = true
+   ```
+
+5. Restart Codex and invoke the plugin or bundled skill with `@Twenty CRM` / `@twenty-crm`.
+
 ## Codex Plugin Layout
 
 ```text
