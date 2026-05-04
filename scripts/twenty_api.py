@@ -16,6 +16,7 @@ from typing import Any
 
 DEFAULT_BASE_URL = "https://api.twenty.com"
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
+CANONICAL_PLUGIN_ROOT = Path.home() / ".codex" / "plugins" / "twenty-crm"
 
 
 def parse_env_line(line: str) -> tuple[str, str] | None:
@@ -35,16 +36,19 @@ def parse_env_line(line: str) -> tuple[str, str] | None:
 
 
 def load_plugin_env() -> None:
-    env_path = PLUGIN_ROOT / ".env"
-    if not env_path.exists():
-        return
-
-    for line in env_path.read_text().splitlines():
-        parsed = parse_env_line(line)
-        if parsed is None:
+    env_paths = [CANONICAL_PLUGIN_ROOT / ".env", PLUGIN_ROOT / ".env"]
+    seen: set[Path] = set()
+    for env_path in env_paths:
+        resolved = env_path.resolve()
+        if resolved in seen or not env_path.exists():
             continue
-        key, value = parsed
-        os.environ.setdefault(key, value)
+        seen.add(resolved)
+        for line in env_path.read_text().splitlines():
+            parsed = parse_env_line(line)
+            if parsed is None:
+                continue
+            key, value = parsed
+            os.environ.setdefault(key, value)
 
 
 def build_url(base_url: str, path: str) -> str:
