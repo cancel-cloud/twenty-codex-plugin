@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "twenty-crm": {
+      "command": "node",
+      "args": ["./mcp/twenty-mcp-server.mjs"],
+      "cwd": "."
+    }
+  }
+}

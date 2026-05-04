@@ -5,6 +5,7 @@ A local Codex plugin for working with [Twenty CRM](https://twenty.com/) develope
 It includes:
 
 - A Codex skill for Twenty REST, GraphQL, Metadata API, app, and webhook workflows.
+- A plugin-local MCP server exposing callable Twenty tools to Codex.
 - A small Python helper for authenticated Twenty REST, GraphQL, and Metadata GraphQL calls.
 - Plugin-local `.env` support so credentials do not need to live in shell startup files.
 
@@ -22,6 +23,13 @@ The helper also respects shell environment variables, and shell values override 
 Do not put credentials in `.codex-plugin/plugin.json`; that file is plugin metadata.
 
 ## Usage
+
+When the plugin is installed and enabled, Codex can call these MCP tools:
+
+- `twenty_connection_info`
+- `twenty_graphql`
+- `twenty_metadata_graphql`
+- `twenty_rest`
 
 From the plugin root:
 
@@ -93,6 +101,8 @@ Codex loads plugins through marketplaces, then installs the selected plugin into
 
 ```text
 .codex-plugin/plugin.json
+.mcp.json
+mcp/twenty-mcp-server.mjs
 skills/twenty-crm/SKILL.md
 scripts/twenty_api.py
 .env.example

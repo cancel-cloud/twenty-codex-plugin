@@ -76,6 +76,17 @@ The helper uses:
 - `TWENTY_API_KEY`, required for API requests
 - `plugins/twenty-crm/.env`, loaded automatically when present
 
+## Callable MCP Tools
+
+When installed as a Codex plugin, the bundled MCP server exposes:
+
+- `twenty_connection_info`: show configured base URL and whether a token is present.
+- `twenty_graphql`: call Twenty Core GraphQL at `/graphql`.
+- `twenty_metadata_graphql`: call Twenty Metadata GraphQL at `/metadata`.
+- `twenty_rest`: call Twenty REST endpoints.
+
+Prefer the MCP tools when the user invokes the plugin directly. Use the helper script when working from the shell.
+
 ## Twenty Apps Notes
 
 Twenty Apps are TypeScript packages managed as code. They can define custom objects, fields, logic functions, front components, AI skills, agents, views, navigation, and page layouts.
